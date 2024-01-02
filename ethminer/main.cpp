@@ -497,10 +497,10 @@ public:
         {
             while (warnings.size())
             {
-                cout << warnings.front() << endl;
+                
                 warnings.pop();
             }
-            cout << endl;
+            
         }
         return true;
     }
@@ -527,21 +527,21 @@ public:
         // If requested list detected devices and exit
         if (m_shouldListDevices)
         {
-            cout << setw(4) << " Id ";
-            cout << setiosflags(ios::left) << setw(10) << "Pci Id    ";
-            cout << setw(5) << "Type ";
-            cout << setw(30) << "Name                          ";
+            
+            
+            
+            
 
 #if ETH_ETHASHCUDA
             if (m_minerType == MinerType::CUDA || m_minerType == MinerType::Mixed)
             {
-                cout << setw(5) << "CUDA ";
-                cout << setw(4) << "SM  ";
+                
+                
             }
 #endif
 #if ETH_ETHASHCL
             if (m_minerType == MinerType::CL || m_minerType == MinerType::Mixed)
-                cout << setw(5) << "CL   ";
+                
 #endif
             cout << resetiosflags(ios::left) << setw(13) << "Total Memory"
                  << " ";
@@ -555,22 +555,22 @@ public:
             }
 #endif
 
-            cout << resetiosflags(ios::left) << endl;
-            cout << setw(4) << "--- ";
-            cout << setiosflags(ios::left) << setw(10) << "--------- ";
-            cout << setw(5) << "---- ";
-            cout << setw(30) << "----------------------------- ";
+            
+            
+            
+            
+            
 
 #if ETH_ETHASHCUDA
             if (m_minerType == MinerType::CUDA || m_minerType == MinerType::Mixed)
             {
-                cout << setw(5) << "---- ";
-                cout << setw(4) << "--- ";
+                
+                
             }
 #endif
 #if ETH_ETHASHCL
             if (m_minerType == MinerType::CL || m_minerType == MinerType::Mixed)
-                cout << setw(5) << "---- ";
+                
 #endif
             cout << resetiosflags(ios::left) << setw(13) << "------------"
                  << " ";
@@ -583,39 +583,39 @@ public:
                      << " ";
             }
 #endif
-            cout << resetiosflags(ios::left) << endl;
+            
             std::map<string, DeviceDescriptor>::iterator it = m_DevicesCollection.begin();
             while (it != m_DevicesCollection.end())
             {
                 auto i = std::distance(m_DevicesCollection.begin(), it);
-                cout << setw(3) << i << " ";
-                cout << setiosflags(ios::left) << setw(10) << it->first;
-                cout << setw(5);
+                
+                
+                
                 switch (it->second.type)
                 {
                 case DeviceTypeEnum::Cpu:
-                    cout << "Cpu";
+                    
                     break;
                 case DeviceTypeEnum::Gpu:
-                    cout << "Gpu";
+                    
                     break;
                 case DeviceTypeEnum::Accelerator:
-                    cout << "Acc";
+                    
                     break;
                 default:
                     break;
                 }
-                cout << setw(30) << (it->second.name).substr(0, 28);
+                
 #if ETH_ETHASHCUDA
                 if (m_minerType == MinerType::CUDA || m_minerType == MinerType::Mixed)
                 {
-                    cout << setw(5) << (it->second.cuDetected ? "Yes" : "");
-                    cout << setw(4) << it->second.cuCompute;
+                    
+                    
                 }
 #endif
 #if ETH_ETHASHCL
                 if (m_minerType == MinerType::CL || m_minerType == MinerType::Mixed)
-                    cout << setw(5) << (it->second.clDetected ? "Yes" : "");
+                    
 #endif
                 cout << resetiosflags(ios::left) << setw(13)
                      << getFormattedMemory((double)it->second.totalMemory) << " ";
@@ -628,7 +628,7 @@ public:
                          << getFormattedMemory((double)it->second.clMaxWorkGroup) << " ";
                 }
 #endif
-                cout << resetiosflags(ios::left) << endl;
+                
                 it++;
             }
 
@@ -1369,7 +1369,7 @@ int main(int argc, char** argv)
 #endif
 
             cli.execute();
-            cout << endl << endl;
+            
             return 0;
         }
         catch (std::invalid_argument& ex1)
